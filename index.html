@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
 	<meta charset="UTF-8">
 	<title>VARC株式会社</title>
+	<script defer src="https://www.pushcode.jp/dist/js/pushcode.js"></script>
+<script>
+window.PushCodeInit = function() {
+  try {
+    if (PushCode && PushCode.isSupport()) {
+      PushCode.init({ domainToken: '16ada5e3cd529c84fbde087d0eee155f715852909a9a99f592a77ca66f9450fc', userid: '' });
+    }
+  }
+  catch (err) {
+    console.error(err);
+    if (PushCode) {
+      PushCode.sendError(err);
+    }
+  }
+};
+window.addEventListener('load', function() {
+    var button = document.getElementsByClassName('pushcode-handler');
+    for (var i = 0; i < button.length; i++) {
+        button[i].addEventListener('click', function () {
+            PushCode.requestPermission();
+        });
+    }
+});
+</script>
 </head>
 <body>
     <h1>通知用</h1>
+<pushcode-subscribe-toggle-button subscribe-label="ARCからの通知" unsubscribe-label="通知をOFFにする" blocked-label="通知をブロックしています"></pushcode-subscribe-toggle-button>
 </body>
 </html>
